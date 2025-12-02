@@ -1,7 +1,9 @@
 # ultima-maps-parser
-A toolkit for decoding and analyzing Ultima game data, including maps, tile sets, and other assets. It converts classic game files into readable formats, enabling exploration, visualization, and study of Ultima worlds.
+This project exists to make sure future generations can easily decode and understand various data formats used in the classic Ultima games—things like maps, tilesets, and other game assets. A lot of the existing tools that handle these formats are old, unmaintained, closed-source, or rely on proprietary systems. Many are difficult to learn from, and they’re not designed for long-term accessibility.
 
-This project is a toolkit for decoding and analyzing early Ultima game data, including maps, tile sets, dungeon layouts, and other assets. The goal is to convert proprietary game files into readable formats for exploration, visualization, and study of the classic Ultima worlds. The toolkit is modular and extensible, designed to support multiple titles in the series.
+As an open-source developer, I want to change that. My goal is to build a set of tools and documentation that are fully open, easy to understand, and built using modern, accessible technologies. I want someone 20 or 30 years from now to be able to open this project and immediately grasp how to decode these files, how the formats work, and how the original games structured their data.
+
+This project is meant to be a clear, long-lasting resource for anyone interested in how the Ultima series stored its game data—whether they’re developers, historians, or just curious fans.
 
 ## Ultima I:
 TBD – support for reading maps and tiles is planned.

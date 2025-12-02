@@ -1,6 +1,6 @@
 // TODO: all this code could proabally be optamized better
 
-import { cgaPalette, palettes } from "../constants/palettes";
+import { palettes } from "../constants/palettes";
 import { pixelToRgba } from "../utility/pixel-to-rgba";
 
 const BYTES_PER_TILE = 64; // 16x16 2bpp CGA
@@ -83,4 +83,72 @@ export const extractCgaTileDataToRgba = (data: Uint8Array): number[][][][] => {
 
   return tiles;
 };
+
+/**
+ * Decode a single 16x16 EGA tile from SHAPES.EGA.
+ *
+ * Each byte encodes **two pixels**:
+ *   - High nibble (bits 7-4) → first pixel
+ *   - Low nibble  (bits 3-0) → second pixel
+ *
+ * Tiles are NOT stored in **half-order**:
+ *
+ * @param {Uint8Array} tile - A 128-byte buffer representing one 16x16 EGA tile
+ * @returns {number[][]} A 16x16 array of numeric pixel indices (0-15)
+ * 
+ * @throws {Error} If the tile is not exactly 128 bytes
+ */
+export const decodeEGATile = (tile: Uint8Array): number[][] => {
+  if (!tile || tile.length !== 128) {
+    throw new Error("Tile buffer must be a Uint8Array of exactly 128 bytes.");
+  }
+
+  const pixels: number[][] = Array.from({ length: 16 }, () => Array(16).fill(0));
+
+  let byteIndex = 0;
+
+  // Decode 16x16 tile
+  for (let row = 0; row < 16; row++) {
+    const rowPixels = pixels[row];
+
+    for (let col = 0; col < 16; col += 2) {
+      const b = tile[byteIndex++];
+      rowPixels![col]     = (b! >> 4) & 0x0f; // high nibble → first pixel
+      rowPixels![col + 1] = b! & 0x0f;        // low nibble → second pixel
+    }
+  }
+  return pixels;
+};
+
+
+
+/**
+ * Decodes all 16x16 CGA tiles from SHAPES.ULT and returns an array of RGBA pixels.
+ *
+ * @param data The raw SHAPES.ULT data
+ * @returns Array of tiles: tiles[tileIndex][y][x] = [r,g,b,a]
+ */
+export const extractEgaTileDataToRgba = (data: Uint8Array): number[][][][] => {
+  
+  const tileCount = Math.floor(data.length / 128);
+  const tiles: number[][][][] = [];
+
+  for (let i = 0; i < tileCount; i++) {
+    const start = i * 128;
+    const tileBuffer = data.slice(start, start + 128);
+
+    // Decode raw 2bpp tile
+    const rawPixels: number[][] = decodeEGATile(tileBuffer);
+
+    // Convert each pixel to RGBA
+    const rgbaTile: number[][][] = Array.from({ length: TILE_SIZE }, (_, y) =>
+      Array.from({ length: TILE_SIZE }, (_, x) => pixelToRgba(rawPixels[y]?.[x] ?? 0, palettes.egaPalette))
+    );
+
+    tiles.push(rgbaTile);
+  }
+
+  return tiles;
+};
+
 

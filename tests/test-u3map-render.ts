@@ -2,7 +2,7 @@
 // TODO: Write some actual UNIT tests
 
 import { promises as fs } from "fs";  
-import { extractCgaTileDataToRgba } from '../src/ultima-3/tile.decoder';  
+import { extractCgaTileDataToRgba, extractEgaTileDataToRgba } from '../src/ultima-3/tile.decoder';  
 import { decodeWorldMap } from "../src/ultima-3/map.decoder";  
 import { renderMapAsPng } from "../src/ultima-3/png.renderer";  
 import { RenderTask } from "../src/types/render-task.type";  
@@ -12,14 +12,14 @@ import { writePngToFile } from "../src/utility/file.utilities";
 const main = async () => {  
   // Where to find test input data (tiles + map)  
   const TEST_DATA_LOC = "./tests/data/ultima-3/";  
-  const TILES_FILE = "SHAPES.ULT";  // The tileset file (contains the “shapes/tiles” data)  
-  const MAP_FILE = 'SOSARIA.ULT';   // The world map data file we want to render  
+  const TILES_FILE = "shapes.ega";  // The tileset file (contains the “shapes/tiles” data)  
+  const MAP_FILE = 'BRITISH.ULT';   // The world map data file we want to render  
   const OUTPUT_FILE = `./out/${MAP_FILE}_render.png`;  // Path where the rendered PNG will be saved  
 
   // Read the binary data of the tiles file  
   const buffer = await fs.readFile(`${TEST_DATA_LOC}${TILES_FILE}`);  
   // Decode all tiles: convert raw CGA‑style tile data into RGBA (usable color + alpha) format  
-  const tiles = extractCgaTileDataToRgba(buffer);  
+  const tiles = extractEgaTileDataToRgba(buffer);  
   // `tiles` is now an array of RGBA‑formatted tiles ready for use in rendering  
 
   // Read the binary data of the world map file  

@@ -1,0 +1,18 @@
+{
+  "name": "ultima-maps-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/pngjs": "^6.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test:u3map": "ts-node ./tests/test-u3map-render.ts"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

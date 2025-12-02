@@ -5,6 +5,43 @@ As an open-source developer, I want to change that. My goal is to build a set of
 
 This project is meant to be a clear, long-lasting resource for anyone interested in how the Ultima series stored its game data—whether they’re developers, historians, or just curious fans.
 
+### Why TypeScript?
+
+I chose TypeScript for this project because it strikes the right balance between accessibility and structure. It’s easy to learn, easy to maintain, and strong enough to guide people into understanding the code properly instead of getting lost in loosely typed guesswork. On top of that, it’s incredibly straightforward to work with: you can download the source, run yarn install, execute one of the included tests, and you’ll immediately have output files to inspect.
+
+## Quickstart
+Follow these steps to get the project running locally:
+
+1. **Download the repository from GitHub**  
+   - Click the green **Code** button → **Download ZIP**, or  
+   - Clone it with Git:  
+     ```bash
+     git clone https://github.com/DocCaliban/ultima-maps-parser.git
+     ```
+
+2. **Open the project in your IDE**  
+   I recommend **VS Code**, but you can use whatever editor you prefer.
+
+3. **Open a command prompt / terminal in the project folder**  
+   - On Windows: you can open PowerShell, Command Prompt, or the built-in terminal in VS Code.  
+   - On macOS/Linux: open Terminal.
+
+4. **Install dependencies (just run Yarn with no arguments)**  
+   ```bash
+   yarn
+   ```
+5. **Explore the test file**
+Inside the `tests` directory, open: `test-u3map-renderer.ts`
+This file is a good starting point for understanding how the Ultima III map rendering works.
+Feel free to read through it, tweak things, or log different values to see how the decoding behaves.
+
+6. **Run the Ultima III map test**
+```bash
+yarn test:u3map
+```
+
+This executes the Ultima III map renderer test and will generate the output file(s) defined in the script. It’s the easiest way to verify the project is set up correctly and see the decoding in action.
+
 ## Ultima I:
 TBD – support for reading maps and tiles is planned.
 
@@ -30,6 +67,3 @@ TBD – decoding of overworld, dungeons, and tile sets is planned.
 
 ## Ultima V:
 TBD – support for more advanced map and tile structures is planned.
-
-Purpose:
-This toolkit is intended for enthusiasts, historians, and researchers interested in the structure and design of the early Ultima games. By converting classic game files into readable formats, it enables detailed exploration, visualization, and archival of these foundational RPG worlds.

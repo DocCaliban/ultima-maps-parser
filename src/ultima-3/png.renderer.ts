@@ -16,8 +16,10 @@ export type RGBA_Tile = RGBA_Pixel[][];
 export const renderMapAsPng = (task: RenderTask, scale: number = 1): PNG => {
   const { width, height, tileWidth, tileHeight, tiles, layout } = task;
 
-  const scaledTileWidth = tileWidth * scale;
-  const scaledTileHeight = tileHeight * scale;
+  const clampedScale = Math.max(1, Math.floor(scale));
+
+  const scaledTileWidth = tileWidth * clampedScale;
+  const scaledTileHeight = tileHeight * clampedScale;
 
   const png = new PNG({
     width: width * scaledTileWidth,
@@ -39,10 +41,10 @@ export const renderMapAsPng = (task: RenderTask, scale: number = 1): PNG => {
           const rgba = tileRow[tx] ?? [0, 0, 0, 255];
 
           // Draw the scaled pixels
-          for (let sy = 0; sy < scale; sy++) {
-            for (let sx = 0; sx < scale; sx++) {
-              const x = mapX * scaledTileWidth + tx * scale + sx;
-              const y = mapY * scaledTileHeight + ty * scale + sy;
+          for (let sy = 0; sy < clampedScale; sy++) {
+            for (let sx = 0; sx < clampedScale; sx++) {
+              const x = mapX * scaledTileWidth + tx * clampedScale + sx;
+              const y = mapY * scaledTileHeight + ty * clampedScale + sy;
               const idx = (y * png.width + x) << 2;
 
               png.data[idx + 0] = rgba[0] ?? 0;

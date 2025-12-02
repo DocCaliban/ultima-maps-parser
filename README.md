@@ -20,8 +20,8 @@ Bits 1-0 → pixel 3
 Rows are stored in a half-order: the first 8 decoded rows correspond to even rows (0,2,4…) and the next 8 to odd rows (1,3,5…).
 ```
 Current Output Types:
-Raw 0–3 Pixel Array: A 16x16 array of pixel values (0–3).
-RGBA Array: Each pixel converted to a standard RGBA color using a CGA palette, producing an array [tileIndex][y][x] = [r,g,b,a].
+- Raw 0–3 Pixel Array: A 16x16 array of pixel values (0–3).
+- RGBA Array: Each pixel converted to a standard RGBA color using a CGA palette, producing an array [tileIndex][y][x] = [r,g,b,a].
 
 ## Ultima IV:
 TBD – decoding of overworld, dungeons, and tile sets is planned.

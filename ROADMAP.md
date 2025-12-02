@@ -36,7 +36,7 @@ This roadmap outlines the planned support and development for decoding, renderin
 **Status:** Partial (current work in `tests/test-u3map-render.ts`)  
 **Goals:**  
 - [x] Decode CGA graphics  
-- [ ] Decode EGA graphics  
+- [x] Decode EGA graphics  
 - [x] Render overworld map  
 - [ ] Render each town map  
 - [ ] Render dungeon maps using 2D tiles (not 3D)  

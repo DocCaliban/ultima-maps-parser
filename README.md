@@ -9,7 +9,15 @@ This project is meant to be a clear, long-lasting resource for anyone interested
 
 I chose TypeScript for this project because it strikes the right balance between accessibility and structure. It’s easy to learn, easy to maintain, and strong enough to guide people into understanding the code properly instead of getting lost in loosely typed guesswork. On top of that, it’s incredibly straightforward to work with: you can download the source, run yarn install, execute one of the included tests, and you’ll immediately have output files to inspect.
 
-## Quickstart
+## Quick Start (in 5 minutes)
+```bash
+git clone https://github.com/DocCaliban/ultima-maps-parser.git  
+cd ultima-maps-parser  
+yarn  
+yarn test:u3map
+```
+
+### Detailed Getting Started
 Follow these steps to get the project running locally:
 
 1. **Download the repository from GitHub**  

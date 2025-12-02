@@ -47,8 +47,33 @@ Feel free to read through it, tweak things, or log different values to see how t
 ```bash
 yarn test:u3map
 ```
-
 This executes the Ultima III map renderer test and will generate the output file(s) defined in the script. It’s the easiest way to verify the project is set up correctly and see the decoding in action.
+
+## Contribution
+Contributions are welcome! Whether you want to fix bugs, add new Ultima decoding support, improve tests, or enhance documentation, feel free to open an issue or submit a pull request.  
+
+To contribute:
+
+1. Fork the repository.  
+2. Create a new branch for your changes.  
+3. Make your changes and provide tests and minimal test data.
+4. Submit a Pull Request with a clear description of your changes.  
+
+Please be respectful of the existing code style and maintain consistency with TypeScript conventions used in the project.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute the code, as long as the original copyright notice and license are included.
+
+---
+
+## Contact
+If you have questions, run into issues, or want to suggest features, please use the GitHub [Issues](https://github.com/DocCaliban/ultima-maps-parser/issues) page.  
+
+You can also reach out via GitHub directly: [DocCaliban](https://github.com/DocCaliban).
 
 ## Ultima I:
 TBD – support for reading maps and tiles is planned.

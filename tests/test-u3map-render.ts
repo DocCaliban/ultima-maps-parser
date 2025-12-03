@@ -14,7 +14,7 @@ const main = async () => {
   const TEST_DATA_LOC = "./tests/ultima-3/data.files/";  
   const TILES_FILE = "SHAPES.ULT";  // The tileset file (contains the “shapes/tiles” data)  
   // const TILES_FILE = "shapes.ega";  // The tileset file (contains the “shapes/tiles” data)  
-  const MAP_FILE = 'SOSARIA.ULT';   // The world map data file we want to render  
+  const MAP_FILE = 'BRITISH.ULT';   // The world map data file we want to render  
   const OUTPUT_FILE = `./out/${MAP_FILE}_render.png`;  // Path where the rendered PNG will be saved  
 
   // Read the binary data of the tiles file  
@@ -42,7 +42,7 @@ const main = async () => {
   // Renders the map to a PNG image. The '4' parameter indicates a scale factor (e.g. 4×) I would reccommend 
   // not going above 8 unless you have a super beefy PC, even then I don't think the `pngjs` library can handle 
   // anything larger than 16
-  const png = renderMapAsPng(rendertask, 4);  
+  const png = renderMapAsPng(rendertask, 1);  
 
   // Write the PNG data to disk at the specified output path  
   await writePngToFile(png, OUTPUT_FILE);  

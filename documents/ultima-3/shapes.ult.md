@@ -1,61 +1,65 @@
-# CGA Pixel Encoding Specification
+# SHAPES.ULT – CGA Pixel Encoding Specification
 
-## 1. Data Structure Overview
+## Overview
 
-The `rawBytes` of the image data is provided as a byte array.  
-Each byte in this array represents **four consecutive pixels**, packed together to minimize storage.  
-Each pixel is stored as a 2-bit value (0–3), corresponding to a color index in the palette.
+`SHAPES.ULT` contains the **graphic tiles** used in Ultima III. Each tile is **16×16 pixels**, stored in a **CGA-style 2-bit per pixel encoding**.  
 
-## 2. Byte Layout
+The encoding packs **four pixels per byte**, with no metadata for dimensions or padding.
 
-Each byte is divided into four 2-bit segments:
+---
 
-| Bits   | Name    | Description       |
-|--------|---------|-----------------|
-| 7–6    | Pixel 0 | First pixel      |
-| 5–4    | Pixel 1 | Second pixel     |
-| 3–2    | Pixel 2 | Third pixel      |
-| 1–0    | Pixel 3 | Fourth pixel     |
+## Byte Layout
 
-    Byte: PP QQ RR SS
-           ↑  ↑  ↑  ↑
-       pixel0 pixel1 pixel2 pixel3
+Each byte contains **four consecutive pixels**, from **left to right**, with 2 bits per pixel:
 
-The pixels are always stored in **left-to-right order** from high bits to low bits.
+| Bits   | Pixel  | Description        |
+|--------|--------|------------------|
+| 7–6    | Pixel 0 | First pixel       |
+| 5–4    | Pixel 1 | Second pixel      |
+| 3–2    | Pixel 2 | Third pixel       |
+| 1–0    | Pixel 3 | Fourth pixel      |
 
-## 3. Example Encoding
-
-Given a byte with the value:
+**Example Value:**
 
 ```
-0xE4 (binary: 1110 0100)
+0xE4 (binary 1110 0100)
 ```
 
-This decodes to:
+Decodes to:
 
-- **Pixel 0 (bits 7–6):** `11` → 3  
-- **Pixel 1 (bits 5–4):** `10` → 2  
-- **Pixel 2 (bits 3–2):** `01` → 1  
-- **Pixel 3 (bits 1–0):** `00` → 0  
+- Pixel 0: `11` → 3  
+- Pixel 1: `10` → 2  
+- Pixel 2: `01` → 1  
+- Pixel 3: `00` → 0  
 
-## 4. Extraction Requirements
+---
 
-A decoding method must:
+## Pixel Extraction
 
-- Accept an array of `rawBytes` containing the encoded pixel stream.  
-- Iterate over each byte in order.  
-- Extract pixel values using:
+To extract pixels from a byte:
 
-    | Pixel   | Bits Used | Operation           | Details                                           |
-    |---------|-----------|-------------------|--------------------------------------------------|
-    | Pixel 0 | Bits 7–6  | `(byte >> 6) & 0x03` | Shifts high 2 bits down into the low position  |
-    | Pixel 1 | Bits 5–4  | `(byte >> 4) & 0x03` | Shifts next 2 bits into low position           |
-    | Pixel 2 | Bits 3–2  | `(byte >> 2) & 0x03` | Shifts next 2 bits into low position           |
-    | Pixel 3 | Bits 1–0  | `byte & 0x03`       | Keeps last 2 bits only                         |
+| Pixel   | Bits Used | Extraction Expression      |
+|---------|-----------|---------------------------|
+| Pixel 0 | 7–6       | `(byte >> 6) & 0x03`      |
+| Pixel 1 | 5–4       | `(byte >> 4) & 0x03`      |
+| Pixel 2 | 3–2       | `(byte >> 2) & 0x03`      |
+| Pixel 3 | 1–0       | `byte & 0x03`             |
 
-- **This data is stored in interleaved row order**; decoding must reorder rows according to the interleaving pattern to reconstruct the correct image.
+---
 
-## 5. Implementation Notes
+## Row Interleaving
 
-- The format contains **no padding or dimension metadata**; knowing the width and height of the image is required to decode this data properly.
-- Pixel values are **raw 2-bit integers** and require palette mapping when rendered.  
+Tiles in `SHAPES.ULT` are stored in **interleaved row order**:
+
+- The **first 8 rows** of a tile are stored in **even rows** (0, 2, 4 …)  
+- The **last 8 rows** are stored in **odd rows** (1, 3, 5 …)  
+
+Decoding must **reorder the rows** to reconstruct the full 16×16 tile correctly.
+
+
+# SHAPES.ULT Tiles
+
+This table lists each tile in `SHAPES.ULT` with its **name**, **tile number (hex offset)**
+
+> Each tile is 16×16 pixels, 2 bits per pixel, 4 pixels per byte → **64 bytes per tile**.
+

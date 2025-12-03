@@ -55,11 +55,3 @@ Tiles in `SHAPES.ULT` are stored in **interleaved row order**:
 - The **last 8 rows** are stored in **odd rows** (1, 3, 5 …)  
 
 Decoding must **reorder the rows** to reconstruct the full 16×16 tile correctly.
-
-
-# SHAPES.ULT Tiles
-
-This table lists each tile in `SHAPES.ULT` with its **name**, **tile number (hex offset)**
-
-> Each tile is 16×16 pixels, 2 bits per pixel, 4 pixels per byte → **64 bytes per tile**.
-

@@ -20,34 +20,70 @@ yarn test:u3map
 ### Detailed Getting Started
 Follow these steps to get the project running locally:
 
-1. **Download the repository from GitHub**  
+**Download the repository from GitHub**  
    - Click the green **Code** button → **Download ZIP**, or  
    - Clone it with Git:  
      ```bash
      git clone https://github.com/DocCaliban/ultima-maps-parser.git
      ```
 
-2. **Open the project in your IDE**  
+**Open the project in your IDE**  
    I recommend **VS Code**, but you can use whatever editor you prefer.
 
-3. **Open a command prompt / terminal in the project folder**  
+**Open a command prompt / terminal in the project folder**  
    - On Windows: you can open PowerShell, Command Prompt, or the built-in terminal in VS Code.  
    - On macOS/Linux: open Terminal.
 
-4. **Install dependencies (just run Yarn with no arguments)**  
+**Install dependencies (just run Yarn with no arguments)**  
    ```bash
    yarn
    ```
-5. **Explore the test file**
-Inside the `tests` directory, open: `test-u3map-renderer.ts`
-This file is a good starting point for understanding how the Ultima III map rendering works.
-Feel free to read through it, tweak things, or log different values to see how the decoding behaves.
 
-6. **Run the Ultima III map test**
-```bash
-yarn test:u3map
+### Install Data Files
+
+To use this project, you will need the original Ultima III data files. This includes:
+
+- Map files corresponding to the towns, castles, dungeons, arenas, and overworlds.  
+- Tilesets contained in `shapes.ega` **or** `shapes.ult`.
+
+Place all these files into your `Data/Ultima-3` folder so that the rendering and map tools can access them.
+
+> **Note:** We highly recommend purchasing a legal copy of Ultima III, for example from [Good Old Games](https://www.gog.com/), so you can obtain the data files legitimately. This ensures you are working with valid, licensed assets.
+
+
+# Install Data Files
+
+To run the Ultima III map renderer, you need the actual game data files. Specifically, you need:
+
+- `SHAPES.ULT` or `SHAPES.EGA` – contains the tiles/shapes used in the maps.
+- All Ultima III map files, for example: `MOON.ULT`, `FAWN.ULT`, etc.
+
+Place all of these files in the `Data/Ultima-3` folder in the project.
+
+> **Note:** It’s highly recommended to purchase a legal copy of the game on [Good Old Games](https://www.gog.com/) so that you have valid data files.
+
+# Run the Ultima III Map Renderer
+
+Run the interactive renderer with:
+
 ```
-This executes the Ultima III map renderer test and will generate the output file(s) defined in the script. It’s the easiest way to verify the project is set up correctly and see the decoding in action.
+yarn render
+```
+
+This allows you to:
+
+- Select map types (Towns, Castles, Dungeons, Arenas, Overworlds)
+- Render maps as PNG files in the `./out` folder
+- Switch between CGA, EGA, or Both graphics modes during rendering
+
+## Example
+
+1. Run `yarn render`.
+2. Select a map type, e.g., `1` for Towns.
+3. Choose a specific map from the list, e.g., `2` for Fawn (`FAWN.ULT`).
+4. The renderer will create a PNG in the `./out` folder, e.g., `FAWN.ULT_render.png`.
+5. To switch graphics modes, choose the corresponding menu option and select `CGA`, `EGA`, or `Both`.
+
 
 ## Contribution
 Contributions are welcome! Whether you want to fix bugs, add new Ultima decoding support, improve tests, or enhance documentation, feel free to open an issue or submit a pull request.  

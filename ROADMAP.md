@@ -37,8 +37,10 @@ This roadmap outlines the planned support and development for decoding, renderin
 **Goals:**  
 - [x] Decode CGA graphics  
 - [x] Decode EGA graphics  
-- [x] Render overworld map  
-- [ ] Render each town map  
+- [x] Render overworld map 
+- [x] Render each town map
+- [x] Render Battle Arenas
+- [x] Render Demo/Intro map
 - [ ] Render dungeon maps using 2D tiles (not 3D)  
 - [ ] Explore support for alternate file types / ports:  
   - [ ] Commodore 64  

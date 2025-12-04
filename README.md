@@ -50,18 +50,6 @@ Place all these files into your `Data/Ultima-3` folder so that the rendering and
 
 > **Note:** We highly recommend purchasing a legal copy of Ultima III, for example from [Good Old Games](https://www.gog.com/), so you can obtain the data files legitimately. This ensures you are working with valid, licensed assets.
 
-
-# Install Data Files
-
-To run the Ultima III map renderer, you need the actual game data files. Specifically, you need:
-
-- `SHAPES.ULT` or `SHAPES.EGA` – contains the tiles/shapes used in the maps.
-- All Ultima III map files, for example: `MOON.ULT`, `FAWN.ULT`, etc.
-
-Place all of these files in the `Data/Ultima-3` folder in the project.
-
-> **Note:** It’s highly recommended to purchase a legal copy of the game on [Good Old Games](https://www.gog.com/) so that you have valid data files.
-
 # Run the Ultima III Map Renderer
 
 Run the interactive renderer with:

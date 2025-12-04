@@ -9,7 +9,13 @@ import { Point2D } from "../../types/common.types";
  * @property {Point2D} pixelDimensions An object representing the dimensions of the image in pixels, 
  *                                        where `x` is the width and `y` is the height.
  */
-export interface DecodingOptions {
+export interface ImageDecoderOptions {
   bytesPerImage: number;
   pixelDimensions: Point2D;
+}
+
+export interface MapDecoderOptions {
+  width?: number; // optional map width in tiles
+  height?: number; // optional map height in tiles
+  tileMapping?: boolean;
 }

@@ -1,4 +1,4 @@
-import { DecodingOptions } from "../types/decoder.types";
+import { ImageDecoderOptions } from "../types/decoder.types";
 
 const CGA_BIT_MASK = 0x03; // Mask to extract pixel data
 
@@ -6,7 +6,7 @@ const CGA_BIT_MASK = 0x03; // Mask to extract pixel data
  * Decodes CGA image data from a Uint8Array into a 2D array of pixel values.
  *
  * @param {Uint8Array} data Uint8Array containing CGA-encoded image data.
- * @param {DecodingOptions} options Configuration options for decoding, including:
+ * @param {ImageDecoderOptions} options Configuration options for decoding, including:
  *   @property {number} options.bytesPerImage The number of bytes allocated for each image.
  *   @property {Point2D} options.pixelDimensions Dimensions of the image in pixels, 
  *                                               where `x` is the width and `y` is the height.
@@ -15,7 +15,7 @@ const CGA_BIT_MASK = 0x03; // Mask to extract pixel data
  * @returns {number[][]} A 2D array of pixel values decoded from the CGA data, 
  *                       structured as an array of rows and columns.
  */
-export const decodeCgaPixelData = (data: Uint8Array, options: DecodingOptions): number[][] => {
+export const decodeCgaPixelData = (data: Uint8Array, options: ImageDecoderOptions): number[][] => {
   const { bytesPerImage, pixelDimensions } = options;
 
   if (!data || data.length < bytesPerImage) {

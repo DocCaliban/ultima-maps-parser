@@ -33,24 +33,24 @@ This roadmap outlines the planned support and development for decoding, renderin
 ---
 
 ## Ultima III
-**Status:** Partial (current work in `tests/test-u3map-render.ts`)  
+**Status:** Partial
 **Goals:**  
-- [x] Decode CGA graphics  
-- [x] Decode EGA graphics  
-- [x] Render overworld map 
-- [x] Render each town map
+- [x] Decode CGA graphics
+- [x] Decode EGA graphics
+- [x] Render Overworld maps
+- [x] Render Each town map
 - [x] Render Battle Arenas
 - [x] Render Demo/Intro map
-- [ ] Render dungeon maps using 2D tiles (not 3D)  
+- [x] PNG export of maps
+
+**Long-Term Objectives:**
+- [ ] Render dungeon maps using 2D tiles (not 3D)
+- [ ] Create full JSON representation of all maps
+- [ ] Build a visualization tool for maps
 - [ ] Explore support for alternate file types / ports:  
   - [ ] Commodore 64  
   - [ ] Atari  
   - [ ] Nintendo or other platforms  
-
-**Long-Term Objectives:**  
-- [ ] Create full JSON representation of all maps  
-- [ ] Build a visualization tool for maps with selectable layers (towns, dungeons, overworld)  
-- [ ] Maintain open-source, cross-platform compatibility  
 
 ---
 

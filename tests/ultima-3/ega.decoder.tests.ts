@@ -1,5 +1,5 @@
 import { decodeEGAData } from '../../src/ultima-3/decoders/ega.decoder';
-import { DecodingOptions } from '../../src/ultima-3/types/decoder.types';
+import { ImageDecoderOptions } from '../../src/ultima-3/types/decoder.types';
 import { rawEgaBrushTile, decodedEgaBrushTile } from './test.constants'
 
 describe('decodeEGAData', () => {
@@ -7,7 +7,7 @@ describe('decodeEGAData', () => {
         // Example: 16x16 pixels, 128 bytes per image (for 2 pixels per byte)
         const sampleData = new Uint8Array(128).map((_, i) => i & 0xff); // simple pattern for testing
 
-        const options: DecodingOptions = {
+        const options: ImageDecoderOptions = {
             bytesPerImage: 128,
             pixelDimensions: { x: 16, y: 16 },
         };
@@ -24,7 +24,7 @@ describe('decodeEGAData', () => {
 
     it('throws if data is too short', () => {
         const shortData = new Uint8Array(10);
-        const options: DecodingOptions = { bytesPerImage: 128, pixelDimensions: { x: 16, y: 16 } };
+        const options: ImageDecoderOptions = { bytesPerImage: 128, pixelDimensions: { x: 16, y: 16 } };
         expect(() => decodeEGAData(shortData, options)).toThrow(/Data buffer must be a Uint8Array/);
     });
 });

@@ -43,18 +43,31 @@ export const renderMap = async (
     const mapData = decodeWorldMap(mapBuffer, {
       width: map.dimensions.x,
       height: map.dimensions.y,
+      tileMapping: MAP_FILE === 'DEMO.ULT' ? true : false,
     });
 
     switch (mode) {
       case 'CGA':
-        await writePngToFile(renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 1), path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`));
+        await writePngToFile(
+          renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 1),
+          path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`)
+        );
         break;
       case 'EGA':
-        await writePngToFile(renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 1), path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`));
+        await writePngToFile(
+          renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 1),
+          path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`)
+        );
         break;
       case 'BOTH':
-        await writePngToFile(renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 1), path.join(OUTPUT_DIR, `${MAP_FILE}_render_cga.png`));
-        await writePngToFile(renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 1), path.join(OUTPUT_DIR, `${MAP_FILE}_render_ega.png`));
+        await writePngToFile(
+          renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 1),
+          path.join(OUTPUT_DIR, `${MAP_FILE}_render_cga.png`)
+        );
+        await writePngToFile(
+          renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 1),
+          path.join(OUTPUT_DIR, `${MAP_FILE}_render_ega.png`)
+        );
         break;
       default:
         break;

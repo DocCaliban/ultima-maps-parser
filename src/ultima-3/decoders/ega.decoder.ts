@@ -1,5 +1,5 @@
 import { PIXELS_PER_BYTE, BITS_PER_BYTE, BITS_PER_PIXEL } from "../../constants/image.constants";
-import { DecodingOptions } from "../types/decoder.types";
+import { ImageDecoderOptions } from "../types/decoder.types";
 
 const CGA_BIT_MASK = 0x0f; // Mask to extract pixel data
 
@@ -15,7 +15,7 @@ const CGA_BIT_MASK = 0x0f; // Mask to extract pixel data
  * @returns {number[][]} A 2D array (16x16) of pixel values decoded from the input tile, 
  *                       where each value represents a pixel's color index.
  */
-export const decodeEGAData = (data: Uint8Array, options: DecodingOptions): number[][] => {
+export const decodeEGAData = (data: Uint8Array, options: ImageDecoderOptions): number[][] => {
   const { bytesPerImage, pixelDimensions } = options;
 
   if (!data || data.length < bytesPerImage) {

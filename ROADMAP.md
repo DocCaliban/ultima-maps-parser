@@ -34,6 +34,7 @@ This roadmap outlines the planned support and development for decoding, renderin
 
 ## Ultima III
 **Status:** Partial
+
 **Goals:**  
 - [x] Decode CGA graphics
 - [x] Decode EGA graphics

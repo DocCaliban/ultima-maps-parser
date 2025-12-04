@@ -14,7 +14,7 @@ I chose TypeScript for this project because it strikes the right balance between
 git clone https://github.com/DocCaliban/ultima-maps-parser.git  
 cd ultima-maps-parser  
 yarn  
-yarn test:u3map
+yarn render
 ```
 
 ### Detailed Getting Started

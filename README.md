@@ -98,29 +98,3 @@ You are free to use, modify, and distribute the code, as long as the original co
 If you have questions, run into issues, or want to suggest features, please use the GitHub [Issues](https://github.com/DocCaliban/ultima-maps-parser/issues) page.  
 
 You can also reach out via GitHub directly: [DocCaliban](https://github.com/DocCaliban).
-
-## Ultima I:
-TBD – support for reading maps and tiles is planned.
-
-## Ultima II:
-TBD – support for decoding world and dungeon data is planned.
-
-## Ultima III:
-Currently supports decoding CGA 16x16 tiles from SHAPES.ULT.
-```
-File Format: Each tile is 64 bytes (16x16 pixels, 2 bits per pixel). Each byte encodes 4 pixels:
-Bits 7-6 → pixel 0
-Bits 5-4 → pixel 1
-Bits 3-2 → pixel 2
-Bits 1-0 → pixel 3
-Rows are stored in a half-order: the first 8 decoded rows correspond to even rows (0,2,4…) and the next 8 to odd rows (1,3,5…).
-```
-Current Output Types:
-- Raw 0–3 Pixel Array: A 16x16 array of pixel values (0–3).
-- RGBA Array: Each pixel converted to a standard RGBA color using a CGA palette, producing an array [tileIndex][y][x] = [r,g,b,a].
-
-## Ultima IV:
-TBD – decoding of overworld, dungeons, and tile sets is planned.
-
-## Ultima V:
-TBD – support for more advanced map and tile structures is planned.

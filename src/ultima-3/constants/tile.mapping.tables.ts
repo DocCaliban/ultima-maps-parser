@@ -12,3 +12,12 @@ export const DEMO_TILE_TRANSLATION_TABLE: Record<number, number> = {
   0x21: 0x84, // Lava
   0x22: 0x88, // Moon Gate
 };
+
+export const ARENA_TILE_TRANSLATION_TABLE: Record<number, number> = {
+  0x00: 0x00, // Water
+  0x01: 0x04, // Grass
+  0x02: 0x08, // Brush
+  0x08: 0x20, // Floor
+  0x23: 0x8c, // Wall
+  0x03: 0x0c, // Forest
+};

@@ -4,7 +4,7 @@ import {
   OverworldMap,
   Whirlpool,
 } from '../types/default.types';
-import { DEMO_TILE_TRANSLATION_TABLE } from './constants/demo.tile.translation';
+import { DEMO_TILE_TRANSLATION_TABLE } from './constants/tile.mapping.tables';
 import { MapDecoderOptions } from './types/decoder.types';
 
 export const decodeWorldMap = (
@@ -19,8 +19,8 @@ export const decodeWorldMap = (
   for (let y = 0; y < height; y++) {
     const row: number[] = [];
     for (let x = 0; x < width; x++) {
-      if (options.tileMapping) {
-        const tileByte = DEMO_TILE_TRANSLATION_TABLE[data[y * width + x]!] ?? 0;
+      if (options.tileMapper) {
+        const tileByte = options.tileMapper[data[y * width + x]!] ?? 0;
         row.push(tileByte);
       } else {
         const tileByte = data[y * width + x];

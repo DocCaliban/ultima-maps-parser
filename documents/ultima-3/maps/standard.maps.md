@@ -138,34 +138,6 @@ The Moon Data block stores the phase and sub-phase of the two moons in the game.
 * Chests: encoded using bottom two bits of tile for underlying terrain.
 * When rendering entities, combine entity tile, underlying tile, and X/Y coordinates.
 
-## Addendum: `DEMO.ULT` Map File
-
-The `DEMO.ULT` file is a special map used for the introductory view in Ultima III. Unlike normal overworld maps, its raw tile values do not directly correspond to the standard tile indices. To render this map correctly, a tile mapping must be applied.
-
-### Tile Mapping
-
-Each byte in DEMO.ULT represents a tile, but it must be translated through a mapping table to match the correct tile
-
-| Raw Value | Mapped Tile | Description       |
-| --------- | ----------- | ----------------- |
-| 0x00      | 0x00        | Water             |
-| 0x01      | 0x04        | Grass             |
-| 0x02      | 0x08        | Brush             |
-| 0x03      | 0x0C        | Forest            |
-| 0x04      | 0x10        | Mountains         |
-| 0x05      | 0x14        | Dungeon           |
-| 0x06      | 0x18        | Town              |
-| 0x07      | 0x1C        | Castle            |
-| 0x08      | 0x08        | Brush (duplicate) |
-| 0x0B      | 0x2C        | Frigate           |
-| 0x21      | 0x84        | Lava              |
-| 0x22      | 0x88        | Moon Gate         |
-
-
-### Notes:
-- This mapping is specific to DEMO.ULT. Normal maps (SOSARIA.ULT, MOON.ULT, etc.) do not require mapping; their tile values correspond directly to CGA tile indices.
-- The demo map is also smaller than standard maps (19×6 tiles), so any code handling it should support a custom width/height.
-
 
 ## Addendum: Full list of Maps
 Sorry for the descriptions, I just mostly made stuff up.

@@ -1,5 +1,7 @@
 // constants/ultima3/maps.ts
 
+import { ARENA_TILE_TRANSLATION_TABLE, DEMO_TILE_TRANSLATION_TABLE } from "./tile.mapping.tables";
+
 export const Towns = {
   Moon: {
     name: 'Moon',
@@ -70,14 +72,7 @@ export const Towns = {
     dimensions: { x: 64, y: 64 },
     location: { x: 49, y: 58 },
     file: 'MONTOR_E.ULT',
-  },
-  Ambrosia: {
-    name: 'Ambrosia',
-    description: 'A southern town known for trade and exotic goods.',
-    dimensions: { x: 64, y: 64 },
-    location: { x: 18, y: 60 },
-    file: 'AMBROSIA.ULT',
-  },
+  }
 };
 
 export const Castles = {
@@ -103,76 +98,79 @@ export const Dungeons = {
 
 export const Arenas = {
   ArenaA: {
-    name: 'Arena A',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Shore To Ship',
+    description: 'Fighting from the shore to a ship.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_A.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaB: {
-    name: 'Arena B',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Brush',
+    description: 'Fighting in light brush.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_B.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaC: {
-    name: 'Arena C',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Brick',
+    description: 'Fighting on  a brick floor (Dungeon).',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_C.ULT',
-  },
-  ArenaD: {
-    name: 'Arena D',
-    description: 'A small battle arena for combat encounters.',
-    dimensions: { x: 11, y: 11 },
-    location: { x: 0, y: 0 },
-    file: 'CNFLCT_D.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaF: {
-    name: 'Arena F',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Forest',
+    description: 'Fighting among trees.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_F.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaG: {
-    name: 'Arena G',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Grass',
+    description: 'Fighting on open grass.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_G.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaM: {
-    name: 'Arena M',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Shore to Sea',
+    description: 'Fighting from shore to deeper water.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_M.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaQ: {
-    name: 'Arena Q',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Ship to Sea',
+    description: 'Fighting from a ship into open sea.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_Q.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaR: {
-    name: 'Arena R',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Ship to Shore',
+    description: 'Fighting from a ship toward the shore.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_R.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
   ArenaS: {
-    name: 'Arena S',
-    description: 'A small battle arena for combat encounters.',
+    name: 'Ship to Ship',
+    description: 'Fighting between two ships.',
     dimensions: { x: 11, y: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_S.ULT',
+    tileMapper: ARENA_TILE_TRANSLATION_TABLE
   },
 };
+
 
 export const Overworlds = {
   Demo: {
@@ -181,6 +179,7 @@ export const Overworlds = {
     dimensions: { x: 19, y: 6 },
     location: { x: 0, y: 0 },
     file: 'DEMO.ULT',
+    tileMapper: DEMO_TILE_TRANSLATION_TABLE
   },
   Sosaria: {
     name: 'Sosaria',

@@ -17,5 +17,5 @@ export interface ImageDecoderOptions {
 export interface MapDecoderOptions {
   width?: number; // optional map width in tiles
   height?: number; // optional map height in tiles
-  tileMapping?: boolean;
+  tileMapper?: Record<number, number>;
 }

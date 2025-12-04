@@ -45,7 +45,7 @@ if (Object.keys(validOverworlds).length)
   menuOptions.push({ type: 'Overworlds', maps: validOverworlds });
 
 // Graphics mode state
-let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'CGA';
+let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
 
 // Wrap in async IIFE
 (async () => {
@@ -59,6 +59,7 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'CGA';
     // --- Main Menu ---
     console.log(`\nCurrent Graphics Mode: ${graphicsMode}`);
     console.log('Select a Map Type:');
+
     menuOptions.forEach((option, idx) => {
       console.log(`${idx + 1}. ${option.type}`);
     });
@@ -67,8 +68,8 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'CGA';
 
     const typeChoice = Number(prompt('Enter option number: ')) - 1;
 
+    // Change graphics mode
     if (typeChoice === menuOptions.length) {
-      // Change graphics mode
       console.log('\nSelect Graphics Mode:');
       console.log('1. CGA');
       console.log('2. EGA');
@@ -92,6 +93,7 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'CGA';
       continue; // redisplay main menu
     }
 
+    // Exit
     if (typeChoice === menuOptions.length + 1) {
       console.log('Exiting...');
       process.exit(0);
@@ -103,34 +105,54 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'CGA';
     }
 
     const selectedType = menuOptions[typeChoice];
+
+    // --- Main Menu "All" ---
+    if (selectedType!.type === 'All') {
+      const allMaps = Object.values(selectedType!.maps);
+      for (const map of allMaps) {
+        console.log(`\nRendering: ${map.name} (${map.file})`);
+        await renderMap(map, graphicsMode, { cgaTiles, egaTiles });
+      }
+      console.log('\nRendering complete. Returning to main menu...');
+      continue;
+    }
+
     const maps = Object.values(selectedType!.maps);
 
-    // --- Submenu: Select Specific Map ---
+    // --- Submenu ---
     console.log(
       `\nSelect a ${selectedType!.type} (Graphics: ${graphicsMode}):`
     );
+    console.log(`0. All ${selectedType!.type}`);
     maps.forEach((map, idx) => {
       console.log(`${idx + 1}. ${map.name} (${map.file})`);
     });
     console.log(`${maps.length + 1}. Return to Main Menu`);
 
-    const mapChoice = Number(prompt('Enter option number: ')) - 1;
+    const mapChoice = Number(prompt('Enter option number: '));
 
-    if (mapChoice === maps.length) {
+    if (mapChoice === maps.length + 1) {
       continue; // back to main menu
     }
 
-    if (mapChoice < 0 || mapChoice >= maps.length) {
+    // Submenu "All"
+    let mapsToRender: any[];
+    if (mapChoice === 0) {
+      mapsToRender = maps;
+    } else if (mapChoice > 0 && mapChoice <= maps.length) {
+      mapsToRender = [maps[mapChoice - 1]];
+    } else {
       console.log('Invalid selection.');
       continue;
     }
 
-    const selectedMap = maps[mapChoice];
-    console.log(`\nRendering: ${selectedMap.name} (${selectedMap.file})`);
-
-    // Call your render function
-    await renderMap(selectedMap, graphicsMode, { cgaTiles, egaTiles });
+    // Render selected map(s)
+    for (const map of mapsToRender) {
+      console.log(`\nRendering: ${map.name} (${map.file})`);
+      await renderMap(map, graphicsMode, { cgaTiles, egaTiles });
+    }
 
     console.log('\nRendering complete. Returning to main menu...');
   }
 })();
+

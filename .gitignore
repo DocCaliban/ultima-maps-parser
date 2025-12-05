@@ -138,3 +138,5 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 data/ultima-3/
+# Created by me
+!data/ultima-3/SHAPES.IMG

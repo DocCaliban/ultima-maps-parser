@@ -21,3 +21,12 @@ export const ARENA_TILE_TRANSLATION_TABLE: Record<number, number> = {
   0x23: 0x8c, // Wall
   0x03: 0x0c, // Forest
 };
+
+export const IMG_TILE_TRANSLATION_TABLE: Record<number, number> = {
+  0x00: 0x00, // Water
+  0x20: 0x80, // Force Field
+  0x21: 0x84, // Lava
+  0x22: 0x88, // Moon Gate
+  0x23: 0x8c, // Wall
+  0x24: 0x90, // Void
+};

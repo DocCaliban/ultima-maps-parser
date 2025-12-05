@@ -8,6 +8,8 @@ import {
   Arenas,
   Overworlds,
 } from '../src/ultima-3/constants/ultima3.maps';
+import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
+
 import { renderMap } from './render.map'; // your existing function
 import {
   extractCgaTileDataToRgba,
@@ -21,16 +23,17 @@ const EGA_TILES_FILE = 'shapes.ega';
 
 const checkFileExists = (fileName: string) =>
   fs.existsSync(path.join(DATA_PATH, fileName));
-const filterValidMaps = (maps: Record<string, any>) =>
+const filterValidFiles = (maps: Record<string, any>) =>
   Object.fromEntries(
     Object.entries(maps).filter(([_, map]) => checkFileExists(map.file))
   );
 
-const validTowns = filterValidMaps(Towns);
-const validCastles = filterValidMaps(Castles);
-const validDungeons = filterValidMaps(Dungeons);
-const validArenas = filterValidMaps(Arenas);
-const validOverworlds = filterValidMaps(Overworlds);
+const validTowns = filterValidFiles(Towns);
+const validCastles = filterValidFiles(Castles);
+const validDungeons = filterValidFiles(Dungeons);
+const validArenas = filterValidFiles(Arenas);
+const validOverworlds = filterValidFiles(Overworlds);
+const validImages = filterValidFiles(ImageFiles);
 
 const menuOptions: { type: string; maps: Record<string, any> }[] = [];
 if (Object.keys(validTowns).length)
@@ -43,6 +46,8 @@ if (Object.keys(validArenas).length)
   menuOptions.push({ type: 'Arenas', maps: validArenas });
 if (Object.keys(validOverworlds).length)
   menuOptions.push({ type: 'Overworlds', maps: validOverworlds });
+if (Object.keys(validImages).length)
+  menuOptions.push({ type: 'Images', maps: validImages });
 
 // Graphics mode state
 let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
@@ -155,4 +160,3 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
     console.log('\nRendering complete. Returning to main menu...');
   }
 })();
-

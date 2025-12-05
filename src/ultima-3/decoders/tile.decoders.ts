@@ -49,7 +49,7 @@ export const extractEgaTileDataToRgba = (data: Uint8Array, palette?: RGBColor[])
 
     // Convert each pixel to RGBA
     const rgbaTile: number[][][] = Array.from({ length: TILE_SIZE }, (_, y) =>
-      Array.from({ length: TILE_SIZE }, (_, x) => pixelToRgba(rawPixels[y]?.[x] ?? 0, palette ?? palettes.alternateEgaPalette))
+      Array.from({ length: TILE_SIZE }, (_, x) => pixelToRgba(rawPixels[y]?.[x] ?? 0, palette ?? palettes.c64MappedPalette))
     );
 
     tiles.push(rgbaTile);

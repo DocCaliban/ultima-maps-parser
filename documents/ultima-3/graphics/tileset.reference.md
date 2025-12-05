@@ -5,6 +5,9 @@ This table lists every tile found in either SHAPES.ULT or shapes.ega, along with
 
 You may have seen references to 50 or 64 tiles elsewhere, but those numbers don’t reflect the complete picture. The tileset actually contains 80 unique entries. 64 serve as the core tiles, while the extra 16 provide second-frame animations for select tiles. Below is the full breakdown.
 
+**Note** It’s important to note that, although the full tile set contains 80 tiles, any maps or images can only use the first 64 tiles, due to the limitation of storing tile indices in a single byte.
+
+
 | Name                   | Tile # (hex offset) |
 | ---------------------- | ------ |
 | Water                  | 0x00   |

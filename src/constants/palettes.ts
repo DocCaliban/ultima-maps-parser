@@ -56,7 +56,28 @@ export const alternateEgaPalette: RGBColor[] = [
     [252, 252, 252], // 15 White
 ];
 
+export const c64MappedPalette: [number, number, number][] = [
+    [0,0,0],           // 0 Black
+    [0,0,170],         // 1 Blue
+    [0,204,85],        // 2 Green
+    [170,255,238],     // 3 Cyan
+    [136,0,0],         // 4 Red
+    [85,85,85],        // 5 Placeholder / Dark Grey
+    [221,136,85],      // 6 Orange
+    [204,204,204],     // 7 Light Gray
+    [204,204,204],     // 8 Duplicate Light Gray
+    [119,119,255],     // 9 Dark Blue / Bright Blue
+    [119,204,119],     // 10 Duplicate Green
+    [170,255,238],     // 11 Duplicate Cyan
+    [255,119,119],     // 12 Duplicate Red
+    [204,68,204],      // 13 Magenta
+    [238,238,119],     // 14 Yellow
+    [255,255,255],     // 15 White
+];
+
+
 export const palettes = {
+    c64MappedPalette,
     alternateCgaPalette,
     alternateEgaPalette,
     cgaPalette,

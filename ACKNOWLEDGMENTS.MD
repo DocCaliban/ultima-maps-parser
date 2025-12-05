@@ -9,7 +9,7 @@ Provided a solid foundation of the Ultima III file structure, which served as a 
 
 ## Lord Fenton Gaming
 
-Thanks to Lord Fenton Gaming for his Ultima III PC DOS YouTube walkthrough ([link](https://www.youtube.com/@LordFentonGaming)), which provided clear visuals of all combat arenas. This helped us finalize the tile mappings efficiently.
+Thanks to Lord Fenton Gaming for his Ultima III PC DOS YouTube walkthrough ([link](https://www.youtube.com/@LordFentonGaming)), which provided clear visuals of all combat arenas and the IMG scenes. This helped me finalize the tile mappings efficiently.
 
 
 

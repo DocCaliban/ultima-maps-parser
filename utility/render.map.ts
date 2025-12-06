@@ -1,34 +1,43 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { decodeWorldMap } from '../src/ultima-3/map.decoder';
+import { decodeWorldMap } from '../src/ultima-3/tilemap.decoder';
 import { writePngToFile } from '../src/utility/file.helpers';
-import { renderMapAsPng } from '../src/ultima-3/png.renderer';
-import { RenderTask } from '../src/types/render-task.type';
+import { renderTileMap } from '../src/ultima-3/tilemap.renderer';
+import { TileMapRenderOptions } from '../src/types/render-task.types';
 import { OverworldMap } from '../src/types/default.types';
+import { RGBAColor } from '../src/types/palette.types';
+import { PNG } from 'pngjs';
+import { RenderedTileMap } from '../src/types/bitmap.types';
 
 const TEST_DATA_LOC = './data/ultima-3/';
 const OUTPUT_DIR = './out';
 
-const buildRenderTask = (
-  mapData: OverworldMap,
-  map: any,
-  tiles: any
-): RenderTask => {
+const buildRenderTask = (mapData: OverworldMap, map: any, tiles: any): TileMapRenderOptions => {
   return {
-    width: map.dimensions.x,
-    height: map.dimensions.y,
-    tileWidth: 16,
-    tileHeight: 16,
+    gridSize: {
+      width: map.dimensions.x,
+      height: map.dimensions.y,
+    },
+    tileSize: {
+      width: 16,
+      height: 16,
+    },
     tiles,
     layout: mapData.mapTiles,
+    scale: 4,
   };
+};
+const save = async (value: RenderedTileMap, fileName: string) => {
+  const png = new PNG(value.size);
+  png.data.set(value.data);
+  await writePngToFile(png, path.join(OUTPUT_DIR, fileName));
 };
 
 export const renderMap = async (
   map: any,
   mode: string,
-  tiles: { cgaTiles: number[][][][]; egaTiles: number[][][][] }
+  tiles: { cgaTiles: RGBAColor[][][]; egaTiles: RGBAColor[][][] }
 ) => {
   try {
     const MAP_FILE = map.file;
@@ -37,33 +46,27 @@ export const renderMap = async (
     // Read the map file
     const mapBuffer = await fs.readFile(path.join(TEST_DATA_LOC, MAP_FILE));
     const mapData = decodeWorldMap(mapBuffer, {
-      width: map.dimensions.x,
-      height: map.dimensions.y,
+      size: {
+        width: map.dimensions.x,
+        height: map.dimensions.y,
+      },
       tileMapper: map.tileMapper,
     });
 
     switch (mode) {
       case 'CGA':
-        await writePngToFile(
-          renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 4),
-          path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`)
-        );
+        const renderedCGA = renderTileMap(buildRenderTask(mapData, map, tiles.cgaTiles));
+        await save(renderedCGA, `${MAP_FILE}_cga.png`);
         break;
       case 'EGA':
-        await writePngToFile(
-          renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 4),
-          path.join(OUTPUT_DIR, `${MAP_FILE}_render.png`)
-        );
+        const renderedEGA = renderTileMap(buildRenderTask(mapData, map, tiles.egaTiles));
+        await save(renderedEGA, `${MAP_FILE}_ega.png`);
         break;
       case 'BOTH':
-        await writePngToFile(
-          renderMapAsPng(buildRenderTask(mapData, map, tiles.cgaTiles), 4),
-          path.join(OUTPUT_DIR, `${MAP_FILE}_render_cga.png`)
-        );
-        await writePngToFile(
-          renderMapAsPng(buildRenderTask(mapData, map, tiles.egaTiles), 4),
-          path.join(OUTPUT_DIR, `${MAP_FILE}_render_ega.png`)
-        );
+        const renderCGA = renderTileMap(buildRenderTask(mapData, map, tiles.cgaTiles));
+        await save(renderCGA, `${MAP_FILE}_cga.png`);
+        const renderEGA = renderTileMap(buildRenderTask(mapData, map, tiles.egaTiles));
+        await save(renderEGA, `${MAP_FILE}_ega.png`);
         break;
       default:
         break;

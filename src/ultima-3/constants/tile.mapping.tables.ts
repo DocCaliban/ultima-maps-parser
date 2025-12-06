@@ -1,4 +1,12 @@
-export const DEMO_TILE_TRANSLATION_TABLE: Record<number, number> = {
+import { TileTranslationTable } from '../types/decoder.types';
+
+/**
+ * Translation table for demo tiles.
+ * Maps original tile indices to their corresponding tiles in the demo set.
+ *
+ * @type {TileTranslationTable}
+ */
+export const DEMO_TILE_TRANSLATION_TABLE: TileTranslationTable = {
   0x00: 0x00, // Water
   0x01: 0x04, // Grass
   0x02: 0x08, // Brush
@@ -13,7 +21,13 @@ export const DEMO_TILE_TRANSLATION_TABLE: Record<number, number> = {
   0x22: 0x88, // Moon Gate
 };
 
-export const ARENA_TILE_TRANSLATION_TABLE: Record<number, number> = {
+/**
+ * Translation table for arena tiles.
+ * Maps original tile indices to the corresponding tiles in arena maps.
+ *
+ * @type {TileTranslationTable}
+ */
+export const ARENA_TILE_TRANSLATION_TABLE: TileTranslationTable = {
   0x00: 0x00, // Water
   0x01: 0x04, // Grass
   0x02: 0x08, // Brush
@@ -22,7 +36,13 @@ export const ARENA_TILE_TRANSLATION_TABLE: Record<number, number> = {
   0x03: 0x0c, // Forest
 };
 
-export const IMG_TILE_TRANSLATION_TABLE: Record<number, number> = {
+/**
+ * Translation table for image tiles.
+ * Maps original tile indices to tiles in imported images or special effects.
+ *
+ * @type {TileTranslationTable}
+ */
+export const IMG_TILE_TRANSLATION_TABLE: TileTranslationTable = {
   0x00: 0x00, // Water
   0x20: 0x80, // Force Field
   0x21: 0x84, // Lava

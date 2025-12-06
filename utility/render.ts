@@ -1,32 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 import promptSync from 'prompt-sync';
-import {
-  Towns,
-  Castles,
-  Dungeons,
-  Arenas,
-  Overworlds,
-} from '../src/ultima-3/constants/ultima3.maps';
+import { Towns, Castles, Dungeons, Arenas, Overworlds } from '../src/ultima-3/constants/ultima3.maps';
 import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
 
 import { renderMap } from './render.map'; // your existing function
-import {
-  extractCgaTileDataToRgba,
-  extractEgaTileDataToRgba,
-} from '../src/ultima-3/decoders/tile.decoders';
+import { extractCgaTileDataToRgba, extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
 
 const prompt = promptSync();
 const DATA_PATH = path.resolve('./data/ultima-3');
 const CGA_TILES_FILE = 'SHAPES.ULT';
 const EGA_TILES_FILE = 'shapes.ega';
 
-const checkFileExists = (fileName: string) =>
-  fs.existsSync(path.join(DATA_PATH, fileName));
+const checkFileExists = (fileName: string) => fs.existsSync(path.join(DATA_PATH, fileName));
 const filterValidFiles = (maps: Record<string, any>) =>
-  Object.fromEntries(
-    Object.entries(maps).filter(([_, map]) => checkFileExists(map.file))
-  );
+  Object.fromEntries(Object.entries(maps).filter(([_, map]) => checkFileExists(map.file)));
 
 const validTowns = filterValidFiles(Towns);
 const validCastles = filterValidFiles(Castles);
@@ -36,18 +24,12 @@ const validOverworlds = filterValidFiles(Overworlds);
 const validImages = filterValidFiles(ImageFiles);
 
 const menuOptions: { type: string; maps: Record<string, any> }[] = [];
-if (Object.keys(validTowns).length)
-  menuOptions.push({ type: 'Towns', maps: validTowns });
-if (Object.keys(validCastles).length)
-  menuOptions.push({ type: 'Castles', maps: validCastles });
-if (Object.keys(validDungeons).length)
-  menuOptions.push({ type: 'Dungeons', maps: validDungeons });
-if (Object.keys(validArenas).length)
-  menuOptions.push({ type: 'Arenas', maps: validArenas });
-if (Object.keys(validOverworlds).length)
-  menuOptions.push({ type: 'Overworlds', maps: validOverworlds });
-if (Object.keys(validImages).length)
-  menuOptions.push({ type: 'Images', maps: validImages });
+if (Object.keys(validTowns).length) menuOptions.push({ type: 'Towns', maps: validTowns });
+if (Object.keys(validCastles).length) menuOptions.push({ type: 'Castles', maps: validCastles });
+if (Object.keys(validDungeons).length) menuOptions.push({ type: 'Dungeons', maps: validDungeons });
+if (Object.keys(validArenas).length) menuOptions.push({ type: 'Arenas', maps: validArenas });
+if (Object.keys(validOverworlds).length) menuOptions.push({ type: 'Overworlds', maps: validOverworlds });
+if (Object.keys(validImages).length) menuOptions.push({ type: 'Images', maps: validImages });
 
 // Graphics mode state
 let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
@@ -125,9 +107,7 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
     const maps = Object.values(selectedType!.maps);
 
     // --- Submenu ---
-    console.log(
-      `\nSelect a ${selectedType!.type} (Graphics: ${graphicsMode}):`
-    );
+    console.log(`\nSelect a ${selectedType!.type} (Graphics: ${graphicsMode}):`);
     console.log(`0. All ${selectedType!.type}`);
     maps.forEach((map, idx) => {
       console.log(`${idx + 1}. ${map.name} (${map.file})`);

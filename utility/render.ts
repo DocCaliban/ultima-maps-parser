@@ -6,6 +6,7 @@ import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
 
 import { renderMap } from './render.map'; // your existing function
 import { extractCgaTileDataToRgba, extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
+import { ResourceInformation } from '../src/ultima-3/types/resource.information.types';
 
 const prompt = promptSync();
 const DATA_PATH = path.resolve('./data/ultima-3');
@@ -23,7 +24,7 @@ const validArenas = filterValidFiles(Arenas);
 const validOverworlds = filterValidFiles(Overworlds);
 const validImages = filterValidFiles(ImageFiles);
 
-const menuOptions: { type: string; maps: Record<string, any> }[] = [];
+const menuOptions: { type: string; maps: Record<string, ResourceInformation> }[] = [];
 if (Object.keys(validTowns).length) menuOptions.push({ type: 'Towns', maps: validTowns });
 if (Object.keys(validCastles).length) menuOptions.push({ type: 'Castles', maps: validCastles });
 if (Object.keys(validDungeons).length) menuOptions.push({ type: 'Dungeons', maps: validDungeons });

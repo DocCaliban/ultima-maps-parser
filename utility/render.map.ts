@@ -16,8 +16,8 @@ const OUTPUT_DIR = './out';
 const buildRenderTask = (mapData: OverworldMap, map: any, tiles: any): TileMapRenderOptions => {
   return {
     gridSize: {
-      width: map.dimensions.x,
-      height: map.dimensions.y,
+      width: map.dimensions.width,
+      height: map.dimensions.height
     },
     tileSize: {
       width: 16,
@@ -47,8 +47,8 @@ export const renderMap = async (
     const mapBuffer = await fs.readFile(path.join(TEST_DATA_LOC, MAP_FILE));
     const mapData = decodeWorldMap(mapBuffer, {
       size: {
-        width: map.dimensions.x,
-        height: map.dimensions.y,
+        width: map.dimensions.width,
+        height: map.dimensions.height,
       },
       tileMapper: map.tileMapper,
     });

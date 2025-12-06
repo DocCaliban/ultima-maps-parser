@@ -7,6 +7,7 @@ import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
 import { renderMap } from './render.map'; // your existing function
 import { extractCgaTileDataToRgba, extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
 import { ResourceInformation } from '../src/ultima-3/types/resource.information.types';
+import { renderFullFontToPNG, renderStringToPNG } from '../src/ultima-3/decoders/font.decoder';
 
 const prompt = promptSync();
 const DATA_PATH = path.resolve('./data/ultima-3');
@@ -42,6 +43,29 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
 
   const rawEGA = await fs.readFileSync(path.join(DATA_PATH, EGA_TILES_FILE));
   const egaTiles = extractEgaTileDataToRgba(rawEGA);
+
+  // const fontData = await fs.readFileSync(path.join(DATA_PATH, 'CHARSET.ULT'));
+
+  // const FULL_CHARSET =
+  //   '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F' +
+  //   '\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F' +
+  //   ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_' +
+  //   '`abcdefghijklmnopqrstuvwxyz{|}~\x7F';
+
+  // // Loop over each character and render individually
+  // FULL_CHARSET.split('').forEach((char) => {
+  //   const hexCode = char.charCodeAt(0).toString(16).padStart(2, '0');
+  //   const outputPath = path.join('out', `${hexCode}.png`);
+
+  //   // render the single character
+  //   renderStringToPNG(char, fontData, outputPath, 8); // scale 8 for visibility
+  // });
+
+  // renderStringToPNG(
+  //   '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\x7F',
+  //   fontData,
+  //   'out/font.png'
+  // );
 
   while (true) {
     // --- Main Menu ---

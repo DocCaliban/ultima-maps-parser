@@ -5,9 +5,10 @@ import { Towns, Castles, Dungeons, Arenas, Overworlds } from '../src/ultima-3/co
 import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
 
 import { renderMap } from './render.map'; // your existing function
-import { extractCgaTileDataToRgba, extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
+import { extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
 import { ResourceInformation } from '../src/ultima-3/types/resource.information.types';
-import { renderFullFontToPNG, renderStringToPNG } from '../src/ultima-3/decoders/font.decoder';
+import { buildCgaGraphicsArray } from '../src/ultima-3/decoders/u3.cga.decoder';
+import { PALETTES } from '../src/data/palettes';
 
 const prompt = promptSync();
 const DATA_PATH = path.resolve('./data/ultima-3');
@@ -39,7 +40,7 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
 // Wrap in async IIFE
 (async () => {
   const rawCGA = await fs.readFileSync(path.join(DATA_PATH, CGA_TILES_FILE));
-  const cgaTiles = extractCgaTileDataToRgba(rawCGA);
+  const cgaTiles = buildCgaGraphicsArray(rawCGA, { width: 16, height: 16 }, PALETTES.CGA_ALTERNATE);
 
   const rawEGA = await fs.readFileSync(path.join(DATA_PATH, EGA_TILES_FILE));
   const egaTiles = extractEgaTileDataToRgba(rawEGA);

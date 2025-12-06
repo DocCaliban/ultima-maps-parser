@@ -1,4 +1,4 @@
-import { RGBATile } from "./bitmap.types";
+import { RGBATile } from "../graphics/types/bitmap.types";
 import { Size2D } from "./geometry.types";
 
 /**

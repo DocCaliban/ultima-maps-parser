@@ -1,6 +1,6 @@
 import { PNG } from 'pngjs';
 import fs from 'fs';
-import { decodeCgaPixelData } from './cga.decoder';
+import { decodeCgaImageData } from '../../graphics/cga/cga.decoder';
 import { ScaleOption } from '../../types/render-task.types';
 
 const CGA_PALETTE: [number, number, number][] = [
@@ -45,7 +45,7 @@ export function renderStringToPNG(
 
     const charBytes = fontData.slice(fontIndex * 16, fontIndex * 16 + 16);
 
-    const pixels = decodeCgaPixelData(charBytes, {
+    const pixels = decodeCgaImageData(charBytes, {
       pixelDimensions: { x: charWidth, y: charHeight },
       bytesPerImage: 16,
     });
@@ -103,7 +103,7 @@ export function renderFullFontToPNG(fontData: Uint8Array, outputPath: string) {
     const charBytes = fontData.slice(charIndex * 16, charIndex * 16 + 16);
 
     // decodeCgaPixelData is typed to always return number[][], fully populated
-    const pixels = decodeCgaPixelData(charBytes, {
+    const pixels = decodeCgaImageData(charBytes, {
       pixelDimensions: { x: charWidth, y: charHeight },
       bytesPerImage: 16,
     });

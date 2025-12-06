@@ -6,9 +6,8 @@ import { writePngToFile } from '../src/utility/file.helpers';
 import { renderTileMap } from '../src/ultima-3/tilemap.renderer';
 import { TileMapRenderOptions } from '../src/types/render-task.types';
 import { OverworldMap } from '../src/types/default.types';
-import { RGBAColor } from '../src/types/palette.types';
 import { PNG } from 'pngjs';
-import { RenderedTileMap } from '../src/types/bitmap.types';
+import { RenderedTileMap, RGBAPixel } from '../src/graphics/types/bitmap.types';
 
 const TEST_DATA_LOC = './data/ultima-3/';
 const OUTPUT_DIR = './out';
@@ -37,7 +36,7 @@ const save = async (value: RenderedTileMap, fileName: string) => {
 export const renderMap = async (
   map: any,
   mode: string,
-  tiles: { cgaTiles: RGBAColor[][][]; egaTiles: RGBAColor[][][] }
+  tiles: { cgaTiles: RGBAPixel[][][]; egaTiles: RGBAPixel[][][] }
 ) => {
   try {
     const MAP_FILE = map.file;

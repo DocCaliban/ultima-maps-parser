@@ -1,4 +1,4 @@
-import { decodeCgaPixelData } from '../../src/ultima-3/decoders/cga.decoder';
+import { decodeCgaImageData } from '../../src/graphics/cga/cga.decoder';
 import { ImageDecoderOptions } from '../../src/ultima-3/types/decoder.types';
 import { rawCgaBrushTile, decodedCgaBrushTile } from './test.constants'
 
@@ -12,7 +12,7 @@ describe('decodeCgaPixelData', () => {
             pixelDimensions: { x: 16, y: 16 },
         };
 
-        const result = decodeCgaPixelData(rawCgaBrushTile, options);
+        const result = decodeCgaImageData(rawCgaBrushTile, options);
 
         // Check the result has the correct dimensions
         expect(result.length).toBe(16);          // 16 rows
@@ -25,6 +25,6 @@ describe('decodeCgaPixelData', () => {
     it('throws if data is too short', () => {
         const shortData = new Uint8Array(10);
         const options: ImageDecoderOptions = { bytesPerImage: 128, pixelDimensions: { x: 16, y: 16 } };
-        expect(() => decodeCgaPixelData(shortData, options)).toThrow(/Data buffer must be a Uint8Array/);
+        expect(() => decodeCgaImageData(shortData, options)).toThrow(/Data buffer must be a Uint8Array/);
     });
 });

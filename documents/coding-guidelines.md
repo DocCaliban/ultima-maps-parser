@@ -78,3 +78,33 @@ This keeps branch names clean, readable, and consistent. Avoid combining prefixe
 ---
 
 If additional prefixes become necessary over time, they should be proposed and added to this document for consistency.
+
+## Explicit & Readable Code
+
+**Guideline:** All code should prioritize explicitness and readability over brevity or cleverness. Code should be self-explanatory such that an entry-level developer or a new team member can understand it without guessing or deciphering shorthand.
+
+Key Points:
+1. Avoid implicit logic or hidden behavior.
+  - Prefer clear variable names and descriptive function names.
+  - Avoid chaining multiple operations in a single line if it sacrifices clarity.
+2. Declare types and return values explicitly.
+  - Always annotate functions with parameter and return types (TypeScript) or document types (JS).
+  - Avoid relying on type inference for understanding the code’s intent.
+3. Use intermediate variables for clarity.
+  - Even if a one-liner could achieve the same result, a named variable helps explain the purpose of the value.
+4. Avoid “clever” or terse shortcuts.
+  - Examples: overly compressed map/reduce chains, implicit coercions, or hard-to-read ternary operations.
+5. Comment and document intent, not implementation.
+  - Explain why the code does something if it’s not immediately obvious.
+  - Implementation comments should be minimal if the code is self-explanatory.
+
+# AI Coding Agent Guidelines: Explicit & Readable Code
+
+1. Always write code that is **explicit and self-explanatory**.
+2. Avoid implicit logic or shorthand that makes the code hard to read.
+3. Use **descriptive variable and function names**.
+4. Always include **explicit type annotations** where possible.
+5. Prefer **intermediate variables** for clarity, even if the result could be expressed as a one-liner.
+6. Avoid clever shortcuts, compressed operations, or implicit coercions.
+7. Add comments to explain intent when the purpose is not obvious.
+8. Prioritize human readability over code golf or minimal character count.

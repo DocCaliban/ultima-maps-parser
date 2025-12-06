@@ -1,3 +1,5 @@
+import { RGBATile } from "../graphics/types/bitmap.types";
+
 /**
  * Reorders rows in an interleaved pixel array.
  *
@@ -8,7 +10,7 @@
  * @param height Total number of rows in the final image
  * @returns A new 2D array with rows reordered
  */
-export const reorderInterleavedRows = (pixels: number[][]): number[][] => {
+export const reorderInterleavedRows = (pixels: RGBATile): RGBATile => {
   const height = pixels.length;
   const half = Math.floor(height / 2);
   const rowLength = pixels[0]?.length ?? 0;

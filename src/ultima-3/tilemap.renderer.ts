@@ -1,6 +1,6 @@
 import { TileMapRenderOptions } from '../types/render-task.types';
 import { Size2D } from '../types/geometry.types';
-import { RenderedTileMap } from '../types/bitmap.types';
+import { RenderedTileMap } from '../graphics/types/bitmap.types';
 
 export const renderTileMap = (task: TileMapRenderOptions): RenderedTileMap => {
   const { gridSize, tileSize, tiles, layout, scale = 1 } = task;

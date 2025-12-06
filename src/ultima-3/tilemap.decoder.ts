@@ -1,18 +1,8 @@
-import {
-  Monster,
-  MoonPhase,
-  OverworldMap,
-  Whirlpool,
-} from '../types/default.types';
-import { DEMO_TILE_TRANSLATION_TABLE } from './constants/tile.mapping.tables';
+import { Monster, MoonPhase, OverworldMap, Whirlpool } from '../types/default.types';
 import { MapDecoderOptions } from './types/decoder.types';
 
-export const decodeWorldMap = (
-  data: Uint8Array,
-  options: MapDecoderOptions = {}
-): OverworldMap => {
-  const width = options.width ?? Math.sqrt(0x1180); // fallback if not supplied
-  const height = options.height ?? Math.sqrt(0x1180);
+export const decodeWorldMap = (data: Uint8Array, options: MapDecoderOptions = {}): OverworldMap => {
+  const { width, height } = options.size ?? { width: Math.sqrt(0x1180), height: Math.sqrt(0x1180) };
 
   // --- Map tiles ---
   const mapTiles: number[][] = [];

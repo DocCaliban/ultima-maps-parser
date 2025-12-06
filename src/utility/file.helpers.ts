@@ -3,16 +3,13 @@ import { promises as fs } from 'fs';
 import { PNG } from 'pngjs';
 
 /**
- * Render a PNG and write it to disk.
+ * Writes a PNG object to a file.
  *
- * @param task  RenderTask describing the PNG to build
- * @param path  Output file path
- * @returns Promise<void>
+ * @param {PNG} png - The PNG instance to write.
+ * @param {string} outputPath - The path where the PNG file will be saved.
+ * @returns {Promise<void>} Resolves when the file has been written.
  */
-export const writePngToFile = async (
-  png: PNG,
-  outputPath: string
-): Promise<void> => {
+export const writePngToFile = async (png: PNG, outputPath: string): Promise<void> => {
   const dir = path.dirname(outputPath); // extract folder path
   await fs.mkdir(dir, { recursive: true }); // create folder if missing
 

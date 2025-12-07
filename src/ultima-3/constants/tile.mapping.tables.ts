@@ -1,5 +1,7 @@
 import { TileTranslationTable } from '../types/decoder.types';
 
+export const mapTileIndex = (index: number): number => index << 2;
+
 /**
  * Translation table for demo tiles.
  * Maps original tile indices to their corresponding tiles in the demo set.

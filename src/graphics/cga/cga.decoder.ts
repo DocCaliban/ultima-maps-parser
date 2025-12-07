@@ -17,6 +17,10 @@ const PIXEL_MASK = 0b11;
  * @returns Flat array of pixel indices (0–3) representing the image
  */
 export const decodeCgaData = (data: Uint8Array): RawPixelData => {
+  if (!data || data.length === 0) {
+    throw new Error('Data buffer cannot be null, undefined, or empty.');
+  }
+
   return Array.from(data).flatMap((byte) => {
     // Extract each of the 4 pixels from the byte using bitwise operations
     return [(byte >> 6) & PIXEL_MASK, (byte >> 4) & PIXEL_MASK, (byte >> 2) & PIXEL_MASK, byte & PIXEL_MASK];

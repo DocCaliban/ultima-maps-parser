@@ -1,13 +1,5 @@
-// TODO: all this code could proabally be optamized better
-
-import { PALETTES } from '../../data/palettes';
-import { Palette } from '../../graphics/types/palette.types';
-import { applyPaletteToPixel } from '../../graphics/palette/palette.operations';
-import { decodeEGAData } from './ega.decoder';
 import { Size2D } from '../../types/geometry.types';
 import { RGBAPixel, RGBATile, TileSet } from '../../graphics/types/bitmap.types';
-
-const TILE_SIZE = 16;
 
 /**
  * Break a flat colored pixel array into sequential tiles with width x height,
@@ -38,35 +30,6 @@ export const extractTiles = (pixels: RGBAPixel[], tileSize: Size2D): TileSet => 
     }
 
     tiles.push(tile);
-  }
-
-  return tiles;
-};
-
-export const extractEgaTileDataToRgba = (data: Uint8Array, palette?: Palette): RGBAPixel[][][] => {
-  const BYTES_PER_TILE = 128;
-
-  const tileCount = Math.floor(data.length / BYTES_PER_TILE);
-  const tiles: RGBAPixel[][][] = [];
-
-  for (let i = 0; i < tileCount; i++) {
-    const start = i * BYTES_PER_TILE;
-    const tileBuffer = data.slice(start, start + BYTES_PER_TILE);
-
-    // Decode raw 2bpp tile
-    const rawPixels: number[][] = decodeEGAData(tileBuffer, {
-      pixelDimensions: { x: TILE_SIZE, y: TILE_SIZE },
-      bytesPerImage: BYTES_PER_TILE,
-    });
-
-    // Convert each pixel to RGBA
-    const rgbaTile: RGBAPixel[][] = Array.from({ length: TILE_SIZE }, (_, y) =>
-      Array.from({ length: TILE_SIZE }, (_, x) =>
-        applyPaletteToPixel(rawPixels[y]?.[x] ?? 0, palette ?? PALETTES.EGA_C64)
-      )
-    );
-
-    tiles.push(rgbaTile);
   }
 
   return tiles;

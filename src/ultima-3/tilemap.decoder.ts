@@ -10,7 +10,8 @@ export const decodeWorldMap = (data: Uint8Array, options: MapDecoderOptions = {}
     const row: number[] = [];
     for (let x = 0; x < width; x++) {
       if (options.tileMapper) {
-        const tileByte = options.tileMapper[data[y * width + x]!] ?? 0;
+        //@ts-ignore
+        const tileByte = options.tileMapper(data[y * width + x]!) ?? 0;
         row.push(tileByte);
       } else {
         const tileByte = data[y * width + x];

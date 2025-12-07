@@ -4,6 +4,7 @@ import { Size2D } from '../../types/geometry.types';
 import { Palette } from '../../graphics/types/palette.types';
 import { reorderInterleavedRows } from '../../utility/cga.row.interleaver';
 import { extractTiles } from './tile.decoders';
+import { decodeEGAData } from '../../graphics/ega/ega.decoder';
 
 export const buildCgaGraphicsArray = (value: Uint8Array, size: Size2D, palette: Palette) => {
   const cgaPixelArray = decodeCgaData(value);
@@ -13,4 +14,11 @@ export const buildCgaGraphicsArray = (value: Uint8Array, size: Size2D, palette: 
     return reorderInterleavedRows(tile);
   })
   return ordered;
+};
+
+export const buildEgaGraphicsArray = (value: Uint8Array, size: Size2D, palette: Palette) => {
+  const egaPixelArray = decodeEGAData(value);
+  const coloredPixelArray = applyPalette(egaPixelArray, palette);
+  const tiles = extractTiles(coloredPixelArray, size);
+  return tiles;
 };

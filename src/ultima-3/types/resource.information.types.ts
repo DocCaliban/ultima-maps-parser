@@ -19,5 +19,5 @@ export type ResourceInformation = {
   dimensions: Size2D;
   location: Point2D;
   file: string;
-  tileMapper?: TileTranslationTable;
+  tileMapper?: any;
 };

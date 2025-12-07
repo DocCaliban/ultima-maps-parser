@@ -5,9 +5,8 @@ import { Towns, Castles, Dungeons, Arenas, Overworlds } from '../src/ultima-3/co
 import { ImageFiles } from '../src/ultima-3/constants/ultima3.imgs';
 
 import { renderMap } from './render.map'; // your existing function
-import { extractEgaTileDataToRgba } from '../src/ultima-3/decoders/tile.decoders';
 import { ResourceInformation } from '../src/ultima-3/types/resource.information.types';
-import { buildCgaGraphicsArray } from '../src/ultima-3/decoders/u3.cga.decoder';
+import { buildCgaGraphicsArray, buildEgaGraphicsArray } from '../src/ultima-3/decoders/u3.tile.decoders';
 import { PALETTES } from '../src/data/palettes';
 
 const prompt = promptSync();
@@ -43,7 +42,7 @@ let graphicsMode: 'CGA' | 'EGA' | 'BOTH' = 'EGA';
   const cgaTiles = buildCgaGraphicsArray(rawCGA, { width: 16, height: 16 }, PALETTES.CGA_ALTERNATE);
 
   const rawEGA = await fs.readFileSync(path.join(DATA_PATH, EGA_TILES_FILE));
-  const egaTiles = extractEgaTileDataToRgba(rawEGA);
+  const egaTiles = buildEgaGraphicsArray(rawEGA, { width: 16, height: 16 }, PALETTES.EGA_C64);
 
   // const fontData = await fs.readFileSync(path.join(DATA_PATH, 'CHARSET.ULT'));
 

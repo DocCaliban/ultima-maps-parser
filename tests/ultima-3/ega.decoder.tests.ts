@@ -1,4 +1,4 @@
-import { decodeEGAData } from '../../src/ultima-3/decoders/ega.decoder';
+import { decodeEGADataOld } from '../../src/graphics/ega/ega.decoder';
 import { ImageDecoderOptions } from '../../src/ultima-3/types/decoder.types';
 import { rawEgaBrushTile, decodedEgaBrushTile } from './test.constants'
 
@@ -12,7 +12,7 @@ describe('decodeEGAData', () => {
             pixelDimensions: { x: 16, y: 16 },
         };
 
-        const result = decodeEGAData(rawEgaBrushTile, options);
+        const result = decodeEGADataOld(rawEgaBrushTile, options);
 
         // Check the result has the correct dimensions
         expect(result.length).toBe(16);          // 16 rows
@@ -25,6 +25,6 @@ describe('decodeEGAData', () => {
     it('throws if data is too short', () => {
         const shortData = new Uint8Array(10);
         const options: ImageDecoderOptions = { bytesPerImage: 128, pixelDimensions: { x: 16, y: 16 } };
-        expect(() => decodeEGAData(shortData, options)).toThrow(/Data buffer must be a Uint8Array/);
+        expect(() => decodeEGADataOld(shortData, options)).toThrow(/Data buffer must be a Uint8Array/);
     });
 });

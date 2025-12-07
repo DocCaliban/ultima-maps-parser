@@ -1,7 +1,7 @@
 // constants/ultima3/maps.ts
 
 import { ResourceInformation } from '../types/resource.information.types';
-import { ARENA_TILE_TRANSLATION_TABLE, DEMO_TILE_TRANSLATION_TABLE } from './tile.mapping.tables';
+import { ARENA_TILE_TRANSLATION_TABLE, DEMO_TILE_TRANSLATION_TABLE, mapTileIndex } from './tile.mapping.tables';
 
 /**
  * Town map definitions used in Ultima III.
@@ -202,7 +202,7 @@ export const Overworlds: Record<string, ResourceInformation> = {
     dimensions: { width: 19, height: 6 },
     location: { x: 0, y: 0 },
     file: 'DEMO.ULT',
-    tileMapper: DEMO_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   Sosaria: {
     name: 'Sosaria',

@@ -1,3 +1,4 @@
+```markdown
 # Ultima Maps Parser – Roadmap
 
 This roadmap outlines the planned support and development for decoding, rendering, and analyzing maps and other assets from the Ultima series. Each game is broken down with its own section, describing current status, short-term goals, and long-term objectives.
@@ -138,3 +139,5 @@ This roadmap outlines the planned support and development for decoding, renderin
 - PNG rendering refers to a first-pass visual output of maps.  
 - JSON export provides structured data for analysis or integration with other tools.  
 - As we progress, we will **document all file formats, map layouts, tilesets, and other discovered details** to ensure a clear record for future developers and users.
+
+```

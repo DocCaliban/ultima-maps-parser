@@ -10,11 +10,11 @@ import { Palette } from "../../graphics/types/palette.types";
  * - 0 → Black
  * - 1 → Blue (dark green-ish variant)
  * - 2 → Red
- * - 3 → White (light cyan variant)
+ * - 3 → White 
  */
 export const cgaAlternate: Palette = [
   [0, 0, 0],
   [0, 127, 0],
   [200, 90, 90],
-  [0, 148, 255],
+  [255, 255, 255],
 ];

@@ -1,0 +1,16 @@
+site_name: Ultima Maps Parser
+docs_dir: documents
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Tools:
+    - Generate CRCs: tools/generate-crc.md
+  - CI: ci.md
+  - Developer:
+    - Architecture: developer/architecture.md
+    - Coding Guidelines: developer/coding-guidelines.md
+  - Roadmap: roadmap.md
+  - Acknowledgements: acknowledgments.md
+
+theme:
+  name: readthedocs

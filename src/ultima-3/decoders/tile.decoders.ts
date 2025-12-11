@@ -34,3 +34,33 @@ export const extractTiles = (pixels: RGBAPixel[], tileSize: Size2D): TileSet => 
 
   return tiles;
 };
+
+
+export const extractVGATiles = (pixels: RGBAPixel[], imageSize: Size2D, tileSize: Size2D): RGBATile[] => {
+  const tiles: RGBATile[] = [];
+  const tilesX = Math.floor(imageSize.width / tileSize.width);
+  const tilesY = Math.floor(imageSize.height / tileSize.height);
+
+  for (let ty = 0; ty < tilesY; ty++) {
+    for (let tx = 0; tx < tilesX; tx++) {
+      const tile: RGBATile = [];
+
+      for (let row = 0; row < tileSize.height; row++) {
+        const tileRow: RGBAPixel[] = [];
+        const y = ty * tileSize.height + row;
+
+        for (let col = 0; col < tileSize.width; col++) {
+          const x = tx * tileSize.width + col;
+          const idx = y * imageSize.width + x; // row-major offset
+          tileRow.push(pixels[idx] ?? [0, 0, 0, 255]);
+        }
+
+        tile.push(tileRow);
+      }
+
+      tiles.push(tile);
+    }
+  }
+
+  return tiles;
+};

@@ -1,3 +1,4 @@
+```markdown
 ## Acknowledgements
 
 This project has benefited from the knowledge, work, and resources of many people, whether they realized it or not. The following individuals, walkthroughs, and materials provided crucial information, insights, or inspiration that helped in decoding, visualizing, and documenting the Ultima III file formats and game data. This is my way of giving credit where it is due.
@@ -12,4 +13,4 @@ Provided a solid foundation of the Ultima III file structure, which served as a 
 Thanks to Lord Fenton Gaming for his Ultima III PC DOS YouTube walkthrough ([link](https://www.youtube.com/@LordFentonGaming)), which provided clear visuals of all combat arenas and the IMG scenes. This helped me finalize the tile mappings efficiently.
 
 
-
+```

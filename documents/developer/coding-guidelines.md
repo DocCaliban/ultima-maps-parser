@@ -1,3 +1,4 @@
+```markdown
 # Coding Guidelines
 
 ## Branch Naming & Workflow
@@ -108,3 +109,4 @@ Key Points:
 6. Avoid clever shortcuts, compressed operations, or implicit coercions.
 7. Add comments to explain intent when the purpose is not obvious.
 8. Prioritize human readability over code golf or minimal character count.
+```

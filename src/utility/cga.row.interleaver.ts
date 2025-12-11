@@ -1,4 +1,4 @@
-import { RGBATile } from "../graphics/types/bitmap.types";
+import { RGBATile, RGBAPixel } from "../graphics/types/bitmap.types";
 
 /**
  * Reorders rows in an interleaved pixel array.

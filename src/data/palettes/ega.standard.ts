@@ -1,7 +1,7 @@
 import { Palette } from "../../graphics/types/palette.types";
 
 /**
- * EGA palette used by *Ultima III* (extracted from `Shapes.ega`).
+ * EGA palette used by *Ultima III*
  *
  * Maps pixel indices 0–15 to RGB values. Some values are duplicated as they
  * appear in the source file. Alpha is not explicitly stored and defaults to 255.

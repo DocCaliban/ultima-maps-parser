@@ -9,7 +9,7 @@ import { OverworldMap } from '../src/types/default.types';
 import { PNG } from 'pngjs';
 import { RenderedTileMap, RGBAPixel } from '../src/graphics/types/bitmap.types';
 
-const TEST_DATA_LOC = './data/ultima-3/';
+const TEST_DATA_LOC = './assets/ultima-3/';
 const OUTPUT_DIR = './out';
 
 const buildRenderTask = (mapData: OverworldMap, map: any, tiles: any): TileMapRenderOptions => {
@@ -36,7 +36,7 @@ const save = async (value: RenderedTileMap, fileName: string) => {
 export const renderMap = async (
   map: any,
   mode: string,
-  tiles: { cgaTiles: RGBAPixel[][][]; egaTiles: RGBAPixel[][][] }
+  tiles: { cgaTiles: RGBAPixel[][][]; egaTiles: RGBAPixel[][][]; vgaTiles: RGBAPixel[][][]}
 ) => {
   try {
     const MAP_FILE = map.file;
@@ -61,11 +61,17 @@ export const renderMap = async (
         const renderedEGA = renderTileMap(buildRenderTask(mapData, map, tiles.egaTiles));
         await save(renderedEGA, `${MAP_FILE}_ega.png`);
         break;
-      case 'BOTH':
+      case 'VGA':
+        const renderedVGA = renderTileMap(buildRenderTask(mapData, map, tiles.vgaTiles));
+        await save(renderedVGA, `${MAP_FILE}_vga.png`);
+        break;
+      case 'ALL':
         const renderCGA = renderTileMap(buildRenderTask(mapData, map, tiles.cgaTiles));
         await save(renderCGA, `${MAP_FILE}_cga.png`);
         const renderEGA = renderTileMap(buildRenderTask(mapData, map, tiles.egaTiles));
         await save(renderEGA, `${MAP_FILE}_ega.png`);
+        const renderVGA = renderTileMap(buildRenderTask(mapData, map, tiles.vgaTiles));
+        await save(renderVGA, `${MAP_FILE}_vga.png`);
         break;
       default:
         break;

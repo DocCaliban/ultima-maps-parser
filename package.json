@@ -15,7 +15,8 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "render": "ts-node ./utility/render.ts",
+    "render": "ts-node ./tools/render.ts",
+    "render:ci": "ts-node ./tools/render-ci.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

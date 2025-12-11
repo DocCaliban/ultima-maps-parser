@@ -1,7 +1,7 @@
 // constants/ultima3/maps.ts
 
 import { ResourceInformation } from '../types/resource.information.types';
-import { ARENA_TILE_TRANSLATION_TABLE, DEMO_TILE_TRANSLATION_TABLE, mapTileIndex } from './tile.mapping.tables';
+import { mapTileIndex } from './tile.mapping.tables';
 
 /**
  * Town map definitions used in Ultima III.
@@ -122,7 +122,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_A.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaB: {
     name: 'Brush',
@@ -130,7 +130,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_B.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaC: {
     name: 'Brick',
@@ -138,7 +138,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_C.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaF: {
     name: 'Forest',
@@ -146,7 +146,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_F.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaG: {
     name: 'Grass',
@@ -154,7 +154,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_G.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaM: {
     name: 'Shore to Sea',
@@ -162,7 +162,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_M.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaQ: {
     name: 'Ship to Sea',
@@ -170,7 +170,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_Q.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaR: {
     name: 'Ship to Shore',
@@ -178,7 +178,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_R.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   ArenaS: {
     name: 'Ship to Ship',
@@ -186,7 +186,7 @@ export const Arenas: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'CNFLCT_S.ULT',
-    tileMapper: ARENA_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
 };
 

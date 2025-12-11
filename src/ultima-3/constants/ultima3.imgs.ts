@@ -1,5 +1,5 @@
 import { ResourceInformation } from '../types/resource.information.types';
-import { IMG_TILE_TRANSLATION_TABLE } from './tile.mapping.tables';
+import { mapTileIndex } from './tile.mapping.tables';
 
 /**
  * A collection of image metadata definitions used for decoding and rendering
@@ -25,7 +25,7 @@ export const ImageFiles: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'BRAND.IMG',
-    tileMapper: IMG_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   FOUNTAIN: {
     name: 'Fountain',
@@ -33,7 +33,7 @@ export const ImageFiles: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'FOUNTAIN.IMG',
-    tileMapper: IMG_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   SHRINE: {
     name: 'Shrine',
@@ -41,7 +41,7 @@ export const ImageFiles: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'SHRINE.IMG',
-    tileMapper: IMG_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
   TIME: {
     name: 'Time Lord',
@@ -49,7 +49,7 @@ export const ImageFiles: Record<string, ResourceInformation> = {
     dimensions: { width: 11, height: 11 },
     location: { x: 0, y: 0 },
     file: 'TIME.IMG',
-    tileMapper: IMG_TILE_TRANSLATION_TABLE,
+    tileMapper: mapTileIndex,
   },
 
   /**
